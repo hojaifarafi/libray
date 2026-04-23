@@ -21,7 +21,7 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#137fec",
+                        "primary1": "#137fec",
                         "background-light": "#f6f7f8",
                         "background-dark": "#101922",
                     },
@@ -55,7 +55,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-4">
-                    <div class="size-12 bg-primary rounded-full flex items-center justify-center text-white">
+                    <div class="size-12 bg-primary1 rounded-full flex items-center justify-center text-white">
                         <span class="material-symbols-outlined text-3xl">school</span>
                     </div>
                     <div class="flex flex-col">
@@ -68,20 +68,20 @@
                 </div>
                 @if (request()->routeIs('home'))
                 <nav class="hidden lg:flex items-center gap-1">
-                    <a class="px-4 py-2 text-sm font-semibold text-primary border-b-2 border-primary" href="#home">Home</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                    <a class="px-4 py-2 text-sm font-semibold text-primary1 border-b-2 border-primary1" href="#home">Home</a>
+                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
                         href="#about">About Library</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
                         href="#featured-books">Book Catalog</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
                         href="#notices">Notices</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
                         href="#contact">Contact</a>
                 </nav>
                 @endif
                 <div class="flex items-center gap-3">
                     <a href="{{ route('login') }}"
-                        class="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                        class="flex items-center gap-2 px-5 py-2.5 bg-primary1 text-white rounded-lg text-sm font-bold shadow-lg shadow-primary1/20 hover:bg-primary1/90 transition-all">
                         <span class="material-symbols-outlined text-lg">login</span>
                         <span>Login</span>
                     </a>
@@ -101,7 +101,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+                        <div class="size-10 bg-primary1 rounded-lg flex items-center justify-center text-white">
                             <span class="material-symbols-outlined">school</span>
                         </div>
                         <h2 class="text-xl font-bold text-white uppercase tracking-tighter">FEC Library</h2>
@@ -111,37 +111,37 @@
                         researchers at Faridpur Engineering College.
                     </p>
                     <div class="flex gap-4">
-                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary1 hover:text-white transition-all"
                             href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
-                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary1 hover:text-white transition-all"
                             href="#"><span class="material-symbols-outlined">share</span></a>
-                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary1 hover:text-white transition-all"
                             href="#"><span class="material-symbols-outlined">mail</span></a>
                     </div>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Quick Links</h4>
                     <ul class="space-y-4 text-sm">
-                        <li><a class="hover:text-primary transition-colors" href="#">Digital Repository</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Research Guides</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Library Rules</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Student Login</a></li>
-                        <li><a class="hover:text-primary transition-colors" href="#">Faculty Support</a></li>
+                        <li><a class="hover:text-primary1 transition-colors" href="#">Digital Repository</a></li>
+                        <li><a class="hover:text-primary1 transition-colors" href="#">Research Guides</a></li>
+                        <li><a class="hover:text-primary1 transition-colors" href="#">Library Rules</a></li>
+                        <li><a class="hover:text-primary1 transition-colors" href="#">Student Login</a></li>
+                        <li><a class="hover:text-primary1 transition-colors" href="#">Faculty Support</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contact Us</h4>
                     <ul class="space-y-4 text-sm">
                         <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-primary text-lg">location_on</span>
+                            <span class="material-symbols-outlined text-primary1 text-lg">location_on</span>
                             <span>Faridpur Engineering College,<br />Faridpur-7800, Bangladesh</span>
                         </li>
                         <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-primary text-lg">call</span>
+                            <span class="material-symbols-outlined text-primary1 text-lg">call</span>
                             <span>+880 1234 567 890</span>
                         </li>
                         <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-primary text-lg">alternate_email</span>
+                            <span class="material-symbols-outlined text-primary1 text-lg">alternate_email</span>
                             <span>library@fec.ac.bd</span>
                         </li>
                     </ul>
