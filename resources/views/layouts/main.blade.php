@@ -1,178 +1,332 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Faridpur Engineering College Library</title>
-    <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script> -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    @vite('resources/css/app.css')
-    <!-- <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary1": "#137fec",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Collage Library | Blue & White Theme</title>
+  <!-- Tailwind CSS v3 + Font Awesome Icons + Google Fonts (Inter) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+          },
+          keyframes: {
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+          }
         }
-    </script> -->
-    <style>
-        body {
-            min-height: max(884px, 100dvh);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #f8fafc; }
+    .book-card-hover {
+      transition: all 0.25s ease-in-out;
+    }
+    .book-card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
+    }
+    .notice-item {
+      border-left: 4px solid #2563eb;
+      transition: background 0.2s;
+    }
+    .notice-item:hover {
+      background-color: #eff6ff;
+    }
+    .nav-link-active {
+      border-bottom: 2px solid #2563eb;
+      color: #1e3a8a;
+    }
+  </style>
 </head>
+<body class="font-sans antialiased bg-blue-50/30">
 
-<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
-    <!-- TopAppBar & Navbar -->
-    <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-4">
-                    <div class="size-12 bg-primary1 rounded-full flex items-center justify-center text-white">
-                        <span class="material-symbols-outlined text-3xl">school</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <h1
-                            class="text-xl font-bold leading-none text-slate-900 dark:text-white uppercase tracking-tight">
-                            FEC Library</h1>
-                        <p class="text-[10px] text-slate-500 font-medium tracking-widest uppercase mt-1">Faridpur
-                            Engineering College</p>
-                    </div>
-                </div>
-                @if (request()->routeIs('home'))
-                <nav class="hidden lg:flex items-center gap-1">
-                    <a class="px-4 py-2 text-sm font-semibold text-primary1 border-b-2 border-primary1" href="#home">Home</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
-                        href="#about">About Library</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
-                        href="#featured-books">Book Catalog</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
-                        href="#notices">Notices</a>
-                    <a class="px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-primary1 transition-colors"
-                        href="#contact">Contact</a>
-                </nav>
-                @endif
-                <div class="flex items-center gap-3">
-                    <a href="{{ route('login') }}"
-                        class="flex items-center gap-2 px-5 py-2.5 bg-primary1 text-white rounded-lg text-sm font-bold shadow-lg shadow-primary1/20 hover:bg-primary1/90 transition-all">
-                        <span class="material-symbols-outlined text-lg">login</span>
-                        <span>Login</span>
-                    </a>
-                    <button class="lg:hidden p-2 text-slate-600">
-                        <span class="material-symbols-outlined">menu</span>
-                    </button>
-                </div>
-            </div>
+  <!-- ========== NAVBAR (Blue & White Theme) ========== -->
+  <nav class="sticky top-0 z-50 bg-white shadow-md border-b border-blue-100">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex justify-between items-center py-3 md:py-4">
+        <!-- Logo + Brand -->
+        <div class="flex items-center gap-2">
+          <div class="bg-blue-700 text-white p-2 rounded-lg shadow-md">
+            <i class="fas fa-book-open text-lg"></i>
+          </div>
+          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent">Collage Library</span>
         </div>
-    </header>
-
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-7">
+          <a href="#" class="nav-link text-gray-700 hover:text-blue-700 font-medium transition">Home</a>
+          <a href="#books-section" class="text-gray-700 hover:text-blue-700 font-medium transition">Books</a>
+          <a href="#notice-hours" class="text-gray-700 hover:text-blue-700 font-medium transition">Info</a>
+          <a href="#" class="text-gray-700 hover:text-blue-700 font-medium transition">Resources</a>
+          <a href="#" class="bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md hover:bg-blue-800 transition flex items-center gap-2">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobileMenuBtn" class="text-blue-800 text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile dropdown menu -->
+      <div id="mobileMenu" class="hidden md:hidden pb-4 flex flex-col space-y-3 border-t border-blue-100 mt-2 pt-3">
+        <a href="#" class="text-gray-700 hover:text-blue-700 font-medium py-1">Home</a>
+        <a href="#books-section" class="text-gray-700 hover:text-blue-700 font-medium py-1">Books</a>
+        <a href="#notice-hours" class="text-gray-700 hover:text-blue-700 font-medium py-1">Info</a>
+        <a href="#" class="text-gray-700 hover:text-blue-700 font-medium py-1">Resources</a>
+        <a href="#" class="bg-blue-700 text-white px-4 py-2 rounded-full text-center font-semibold inline-block">Register</a>
+      </div>
+    </div>
+  </nav>
+  <main class="mt-1">
     @yield('content')
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="size-10 bg-primary1 rounded-lg flex items-center justify-center text-white">
-                            <span class="material-symbols-outlined">school</span>
-                        </div>
-                        <h2 class="text-xl font-bold text-white uppercase tracking-tighter">FEC Library</h2>
-                    </div>
-                    <p class="text-sm leading-relaxed mb-6">
-                        Providing the highest quality engineering resources to the next generation of engineers and
-                        researchers at Faridpur Engineering College.
-                    </p>
-                    <div class="flex gap-4">
-                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary1 hover:text-white transition-all"
-                            href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
-                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary1 hover:text-white transition-all"
-                            href="#"><span class="material-symbols-outlined">share</span></a>
-                        <a class="size-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-primary1 hover:text-white transition-all"
-                            href="#"><span class="material-symbols-outlined">mail</span></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Quick Links</h4>
-                    <ul class="space-y-4 text-sm">
-                        <li><a class="hover:text-primary1 transition-colors" href="#">Digital Repository</a></li>
-                        <li><a class="hover:text-primary1 transition-colors" href="#">Research Guides</a></li>
-                        <li><a class="hover:text-primary1 transition-colors" href="#">Library Rules</a></li>
-                        <li><a class="hover:text-primary1 transition-colors" href="#">Student Login</a></li>
-                        <li><a class="hover:text-primary1 transition-colors" href="#">Faculty Support</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Contact Us</h4>
-                    <ul class="space-y-4 text-sm">
-                        <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-primary1 text-lg">location_on</span>
-                            <span>Faridpur Engineering College,<br />Faridpur-7800, Bangladesh</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-primary1 text-lg">call</span>
-                            <span>+880 1234 567 890</span>
-                        </li>
-                        <li class="flex gap-3">
-                            <span class="material-symbols-outlined text-primary1 text-lg">alternate_email</span>
-                            <span>library@fec.ac.bd</span>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm">Library Map</h4>
-                    <div
-                        class="w-full h-32 bg-slate-800 rounded-xl overflow-hidden grayscale contrast-125 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-                        <div class="w-full h-full bg-cover bg-center"
-                            data-alt="Map location of Faridpur Engineering College" data-location="Faridpur, Bangladesh"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfjstOJgiMAXpxAHc1m8MJ6RCKLBeTO8Gr5Zj9D569htDyAx3yuYJl5jbh2P0JWdCGtpDMGKM5ikRCneog3RDFAv1vikgtA4tn3iRn2Ak4NZ0pQzh2bhuk8FpdOEzUfN9FIVedHeUZ7jwc7W5OWygFBzbrFJQsGC7vWPc2zFN8L1yLuEVKeT5iLuXyXJHt19X8NDam89rWp6e5CYDnza6_XiW7seT5fJEGTpO1av_syzEBwwhDpNJ71IO2AFInycqqg--9V-3mN0A");'>
-                        </div>
-                    </div>
-                    <p class="text-[10px] uppercase mt-2 font-bold tracking-widest">Floor 2, Academic Building B</p>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs">© 2023 Faridpur Engineering College Library. All Rights Reserved.</p>
-                <div class="flex gap-6 text-xs font-bold uppercase tracking-widest">
-                    <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
-                    <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
-                    <a class="hover:text-white transition-colors" href="#">Cookies</a>
-                </div>
-            </div>
+  </main>
+  <!-- ========== FOOTER SECTION ========== -->
+  <footer class="bg-gray-900 text-gray-300 pt-14 pb-8">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="col-span-1 md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fas fa-book text-blue-400 text-2xl"></i>
+            <span class="text-white text-xl font-bold">Collage Library</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">Empowering minds with boundless resources. A modern academic library for tomorrow’s leaders.</p>
+          <div class="flex space-x-4 mt-5">
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f text-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter text-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram text-lg"></i></a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin-in text-lg"></i></a>
+          </div>
         </div>
-    </footer>
-    @vite('resources/js/app.js')
-    @stack('scripts')
+        
+        <div>
+          <h4 class="text-white font-semibold text-md mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>About Us</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Membership</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Digital Resources</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Ask a Librarian</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-semibold text-md mb-4">Resources</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>E-books & Journals</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Study Rooms Booking</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>Interlibrary Loan</a></li>
+            <li><a href="#" class="hover:text-blue-400 transition"><i class="fas fa-chevron-right text-xs mr-2"></i>FAQs</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-semibold text-md mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2"><i class="fas fa-map-marker-alt text-blue-400 mt-0.5"></i> 123 Library Avenue, Knowledge City, 560001</li>
+            <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-blue-400"></i> +1 (800) 234-5678</li>
+            <li class="flex items-center gap-2"><i class="fas fa-envelope text-blue-400"></i> hello@collagelibrary.edu</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-500">
+        <p>&copy; 2025 Collage Library. All rights reserved. | Designed with <i class="fas fa-heart text-blue-500"></i> for readers</p>
+      </div>
+    </div>
+  </footer>
     <script>
+    // ---------- BOOKS DATABASE ----------
+    const booksDatabase = [
+      { id: 1, title: "Quantum Physics for Beginners", author: "Alan Miller", department: "science", coverIcon: "fa-atom", rating: "4.8" },
+      { id: 2, title: "The Hidden Life of Trees", author: "Peter Wohlleben", department: "science", coverIcon: "fa-seedling", rating: "4.7" },
+      { id: 3, title: "Cosmos: A Spacetime Odyssey", author: "Carl Sagan", department: "science", coverIcon: "fa-globe", rating: "4.9" },
+      { id: 4, title: "World History: Patterns", author: "Amrita Sen", department: "humanities", coverIcon: "fa-globe-asia", rating: "4.5" },
+      { id: 5, title: "Philosophy of Mind", author: "David Chalmers", department: "humanities", coverIcon: "fa-brain", rating: "4.6" },
+      { id: 6, title: "Classical Mythology", author: "Edith Hamilton", department: "humanities", coverIcon: "fa-feather-alt", rating: "4.4" },
+      { id: 7, title: "Structural Engineering Basics", author: "R. C. Hibbeler", department: "engineering", coverIcon: "fa-drafting-compass", rating: "4.7" },
+      { id: 8, title: "Introduction to Algorithms", author: "CLRS", department: "engineering", coverIcon: "fa-code", rating: "4.9" },
+      { id: 9, title: "Embedded Systems", author: "Jonathan Valvano", department: "engineering", coverIcon: "fa-microchip", rating: "4.6" },
+      { id: 10, title: "Marketing Management", author: "Philip Kotler", department: "business", coverIcon: "fa-chart-line", rating: "4.8" },
+      { id: 11, title: "Financial Intelligence", author: "Karen Berman", department: "business", coverIcon: "fa-coins", rating: "4.5" },
+      { id: 12, title: "Startup Strategies", author: "Eric Ries", department: "business", coverIcon: "fa-rocket", rating: "4.7" },
+      { id: 13, title: "The Art of Color", author: "Johannes Itten", department: "arts", coverIcon: "fa-palette", rating: "4.6" },
+      { id: 14, title: "Drawing on the Right Side", author: "Betty Edwards", department: "arts", coverIcon: "fa-pencil-ruler", rating: "4.8" },
+      { id: 15, title: "Digital Photography", author: "Scott Kelby", department: "arts", coverIcon: "fa-camera", rating: "4.5" }
+    ];
 
-    </script>
+    function renderBooksGrid(booksArray) {
+      const container = document.getElementById("booksGridContainer");
+      const noMsg = document.getElementById("noBooksMessage");
+      if (!container) return;
+      if (booksArray.length === 0) {
+        container.innerHTML = '';
+        noMsg.classList.remove("hidden");
+        return;
+      }
+      noMsg.classList.add("hidden");
+      container.innerHTML = booksArray.map(book => `
+        <div class="book-card-hover bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-200 group">
+          <div class="h-32 bg-gradient-to-br from-blue-100 to-indigo-50 flex items-center justify-center">
+            <i class="fas ${book.coverIcon || 'fa-book'} text-5xl text-blue-600/70 group-hover:scale-110 transition-transform"></i>
+          </div>
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 capitalize">${book.department}</span>
+              <span class="text-xs text-yellow-600"><i class="fas fa-star text-yellow-500"></i> ${book.rating}</span>
+            </div>
+            <h4 class="font-bold text-gray-800 mt-2 text-md line-clamp-1">${book.title}</h4>
+            <p class="text-gray-500 text-xs mt-1">by ${book.author}</p>
+            <button class="mt-3 w-full text-center text-blue-700 text-sm font-medium border border-blue-200 rounded-lg py-1.5 hover:bg-blue-50 transition">Reserve <i class="fas fa-arrow-right text-xs ml-1"></i></button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    let currentFilter = "all";
+    function filterBooksByDept(dept) {
+      if (dept === "all") return [...booksDatabase];
+      return booksDatabase.filter(book => book.department === dept);
+    }
+
+    function updateActiveTab(activeDept) {
+      document.querySelectorAll(".dept-tab").forEach(btn => {
+        if (btn.getAttribute("data-dept") === activeDept) {
+          btn.classList.add("active-tab", "bg-blue-100", "text-blue-800");
+          btn.classList.remove("bg-gray-100", "text-gray-700");
+        } else {
+          btn.classList.remove("active-tab", "bg-blue-100", "text-blue-800");
+          btn.classList.add("bg-gray-100", "text-gray-700");
+        }
+      });
+    }
+
+    function applyFilterAndRender() {
+      const filtered = filterBooksByDept(currentFilter);
+      renderBooksGrid(filtered);
+    }
+
+    // Dept buttons
+    document.querySelectorAll(".dept-tab").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const dept = btn.getAttribute("data-dept");
+        currentFilter = dept;
+        updateActiveTab(dept);
+        applyFilterAndRender();
+        const searchInput = document.getElementById("bookSearchInput");
+        if(searchInput) searchInput.value = "";
+        const feedback = document.getElementById("searchFeedback");
+        if(feedback) feedback.classList.add("hidden");
+      });
+    });
+    
+    // Search logic
+    function searchBooks(query) {
+      if (!query.trim()) {
+        applyFilterAndRender();
+        return;
+      }
+      const lowerQuery = query.toLowerCase();
+      const deptFiltered = filterBooksByDept(currentFilter);
+      const results = deptFiltered.filter(book => 
+        book.title.toLowerCase().includes(lowerQuery) || 
+        book.author.toLowerCase().includes(lowerQuery) ||
+        book.department.toLowerCase().includes(lowerQuery)
+      );
+      renderBooksGrid(results);
+      const feedback = document.getElementById("searchFeedback");
+      if (feedback) {
+        if(results.length === 0) {
+          feedback.innerText = `🔎 No books match "${query}" in ${currentFilter === "all" ? "all departments" : currentFilter} section.`;
+          feedback.classList.remove("hidden");
+        } else {
+          feedback.innerText = `✨ Found ${results.length} book(s) for "${query}".`;
+          feedback.classList.remove("hidden");
+        }
+      }
+      if(results.length === 0) document.getElementById("noBooksMessage")?.classList.remove("hidden");
+      else document.getElementById("noBooksMessage")?.classList.add("hidden");
+    }
+
+    const searchInputField = document.getElementById("bookSearchInput");
+    const searchBtn = document.getElementById("searchButton");
+    if(searchBtn && searchInputField) {
+      const performSearch = () => searchBooks(searchInputField.value);
+      searchBtn.addEventListener("click", performSearch);
+      searchInputField.addEventListener("keyup", (e) => {
+        if(e.key === "Enter") performSearch();
+        if(searchInputField.value === "") {
+          document.getElementById("searchFeedback")?.classList.add("hidden");
+          applyFilterAndRender();
+        }
+      });
+    }
+    
+    // Notices
+    const notices = [
+      { date: "April 22, 2025", text: "📚 Summer Reading Challenge starts next week! Sign up at the front desk.", icon: "fa-sun" },
+      { date: "April 20, 2025", text: "⏳ Library extended hours during exam season (April 28 - May 20).", icon: "fa-hourglass-half" },
+      { date: "April 18, 2025", text: "🎓 New eBook collection: 'Artificial Intelligence & Society' launched.", icon: "fa-microchip" },
+      { date: "April 15, 2025", text: "📢 Workshop: 'Research Methods & Citation' on April 30, 2 PM.", icon: "fa-chalkboard-user" },
+    ];
+    
+    function renderNotices() {
+      const container = document.getElementById("noticeList");
+      if (!container) return;
+      container.innerHTML = notices.map(notice => `
+        <div class="notice-item bg-gray-50 rounded-lg p-3 flex gap-3 items-start transition-all">
+          <i class="fas ${notice.icon} text-blue-600 text-md mt-0.5"></i>
+          <div>
+            <p class="text-xs text-blue-700 font-medium">${notice.date}</p>
+            <p class="text-gray-700 text-sm">${notice.text}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Initialize
+    renderBooksGrid(booksDatabase);
+    renderNotices();
+    updateActiveTab("all");
+    
+    // Register buttons behaviour
+    const allRegBtns = document.querySelectorAll('a:is([href="#"]):has(.fa-user-plus), #heroRegisterBtn, nav a.bg-blue-700');
+    allRegBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("✨ Membership registration portal would open here! ✨\nJoin our library family and enjoy unlimited access.");
+      });
+    });
+    
+    // Reserve alert simulation
+    document.addEventListener("click", (e) => {
+      if(e.target && e.target.innerText.includes("Reserve") && (e.target.tagName === "BUTTON" || (e.target.parentElement && e.target.parentElement.innerText.includes("Reserve")))) {
+        e.preventDefault();
+        alert("📖 Reservation feature: you can reserve this book from your member dashboard.");
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    if(mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+  </script>
 </body>
-
 </html>
