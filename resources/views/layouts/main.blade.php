@@ -302,15 +302,6 @@
     renderNotices();
     updateActiveTab("all");
     
-    // Register buttons behaviour
-    const allRegBtns = document.querySelectorAll('a:is([href="#"]):has(.fa-user-plus), #heroRegisterBtn, nav a.bg-blue-700');
-    allRegBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        alert("✨ Membership registration portal would open here! ✨\nJoin our library family and enjoy unlimited access.");
-      });
-    });
-    
     // Reserve alert simulation
     document.addEventListener("click", (e) => {
       if(e.target && e.target.innerText.includes("Reserve") && (e.target.tagName === "BUTTON" || (e.target.parentElement && e.target.parentElement.innerText.includes("Reserve")))) {

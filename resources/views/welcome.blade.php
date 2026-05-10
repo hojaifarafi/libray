@@ -28,7 +28,7 @@
                     </p>
 
                     <div class="flex flex-wrap items-center gap-5 pt-2">
-                        <a href="#" id="heroRegisterBtn"
+                        <a href="{{ route('membership.register') }}" id="heroRegisterBtn"
                             class="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-blue-700 rounded-xl shadow-lg hover:bg-blue-800 transition-all duration-200 transform hover:scale-[1.02]">
                             <i class="fas fa-user-plus mr-2.5 text-lg"></i> Register for Membership
                         </a>
