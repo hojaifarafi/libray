@@ -4,9 +4,11 @@ use App\Http\Controllers\Admin\Admin;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/membership-register',[HomeController::class,'membershipRegister'])->name('membership.register');
+Route::post('/membership-register',[StudentController::class,'membershipRegister'])->name('membership.register.store');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {

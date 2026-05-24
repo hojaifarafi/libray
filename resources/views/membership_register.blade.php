@@ -32,6 +32,38 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-blue-400"></i>
+                            </div>
+                            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" 
+                                class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all text-gray-700 bg-gray-50 hover:bg-white focus:bg-white" placeholder="Enter your email address" />
+                        </div>
+                        @error('email')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div>
+                        <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-phone text-blue-400"></i>
+                            </div>
+                            <input id="phone" type="tel" name="phone" value="{{ old('phone') }}" required autocomplete="tel" 
+                                class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all text-gray-700 bg-gray-50 hover:bg-white focus:bg-white" placeholder="Enter your phone number" />
+                        </div>
+                        @error('phone')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Department -->
                     <div>
                         <label for="department" class="block text-sm font-semibold text-gray-700 mb-2">Department</label>
@@ -115,29 +147,37 @@
                     </div>
                 </div>
 
-                <!-- Batch Number -->
-                <div>
-                    <label for="batch_number" class="block text-sm font-semibold text-gray-700 mb-2">Batch Number</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <i class="fas fa-layer-group text-blue-400"></i>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Create Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-blue-400"></i>
+                            </div>
+                            <input id="password" type="password" name="password" required autocomplete="new-password" 
+                                class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all text-gray-700 bg-gray-50 hover:bg-white focus:bg-white" placeholder="Min. 8 characters" />
                         </div>
-                        <select id="batch_number" name="batch_number" required 
-                            class="w-full pl-11 pr-10 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all text-gray-700 bg-gray-50 hover:bg-white focus:bg-white appearance-none">
-                            <option value="" disabled selected>Select Batch Number</option>
-                            <option value="1st Batch" {{ old('batch_number') == '1st Batch' ? 'selected' : '' }}>1st Batch</option>
-                            <option value="2nd Batch" {{ old('batch_number') == '2nd Batch' ? 'selected' : '' }}>2nd Batch</option>
-                            <option value="3rd Batch" {{ old('batch_number') == '3rd Batch' ? 'selected' : '' }}>3rd Batch</option>
-                            <option value="4th Batch" {{ old('batch_number') == '4th Batch' ? 'selected' : '' }}>4th Batch</option>
-                            <option value="5th Batch" {{ old('batch_number') == '5th Batch' ? 'selected' : '' }}>5th Batch</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                            <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
-                        </div>
+                        @error('password')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                    @error('batch_number')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i class="fas fa-key text-blue-400"></i>
+                            </div>
+                            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" 
+                                class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all text-gray-700 bg-gray-50 hover:bg-white focus:bg-white" placeholder="Repeat your password" />
+                        </div>
+                        @error('password_confirmation')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
                 <!-- Profile Photo -->

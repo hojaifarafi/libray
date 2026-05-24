@@ -133,6 +133,10 @@
                     class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
                     JD</div>
                 <span class="text-sm font-semibold font-sans hidden lg:inline">Admin Profile</span>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="text-sm font-semibold font-sans hidden lg:inline">Logout</button>
+                </form>
             </div>
         </div>
     </header>

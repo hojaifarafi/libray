@@ -57,7 +57,7 @@
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="flex justify-between items-center py-3 md:py-4">
         <!-- Logo + Brand -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='/'">
           <div class="bg-blue-700 text-white p-2 rounded-lg shadow-md">
             <i class="fas fa-book-open text-lg"></i>
           </div>
@@ -70,7 +70,7 @@
           <a href="#books-section" class="text-gray-700 hover:text-blue-700 font-medium transition">Books</a>
           <a href="#notice-hours" class="text-gray-700 hover:text-blue-700 font-medium transition">Info</a>
           <a href="#" class="text-gray-700 hover:text-blue-700 font-medium transition">Resources</a>
-          <a href="#" class="bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md hover:bg-blue-800 transition flex items-center gap-2">
+          <a href="{{ route('membership.register')}}" class="bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md hover:bg-blue-800 transition flex items-center gap-2">
             <i class="fas fa-user-plus"></i> Register
           </a>
         </div>
@@ -89,7 +89,7 @@
         <a href="#books-section" class="text-gray-700 hover:text-blue-700 font-medium py-1">Books</a>
         <a href="#notice-hours" class="text-gray-700 hover:text-blue-700 font-medium py-1">Info</a>
         <a href="#" class="text-gray-700 hover:text-blue-700 font-medium py-1">Resources</a>
-        <a href="#" class="bg-blue-700 text-white px-4 py-2 rounded-full text-center font-semibold inline-block">Register</a>
+        <a href="{{ route('membership.register')}}" class="bg-blue-700 text-white px-4 py-2 rounded-full text-center font-semibold inline-block">Register</a>
       </div>
     </div>
   </nav>
